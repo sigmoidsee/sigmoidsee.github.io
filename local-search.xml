@@ -4,31 +4,6 @@
   
   
   <entry>
-    <title>测试文章</title>
-    <link href="/2024/07/08/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2024/07/08/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><p><img src="/../images/1.png" alt="哈哈"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Java</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>原创</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World</title>
     <link href="/2024/07/08/hello-world/"/>
     <url>/2024/07/08/hello-world/</url>
