@@ -4,12 +4,18 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2024/07/08/hello-world/"/>
-    <url>/2024/07/08/hello-world/</url>
+    <title>我的第一篇博客</title>
+    <link href="/2024/07/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2024/07/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="我的第一篇博客"><a href="#我的第一篇博客" class="headerlink" title="我的第一篇博客"></a>我的第一篇博客</h3><h5 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h5><p>​纪念一下自己的第一篇博客。感觉我自己还算是一个喜欢分享的人(maybe)，虽然我一直发私密的动态。暑期在做集训的间隙搭建了这个博客网站，感觉还不错，就当QQ空间&#x2F;朋友圈用了。</p><p>​网站是跟着csdn上的教程搭的，部署在github上，基本上不费工夫，搭搭积木一样。搭好之后对网站进行改造有一种小时候玩4399换装的感觉。</p><h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><p>​我为什么搭建这个博客？我们从初中就开始学习历史，历史事件的发生一般有三种原因: 根本原因、直接原因、导火索。</p><p>​我觉得我搭这个网站的根本原因就是自己是一个喜欢记录的人，但是又不想让别人看见，所以搭这个博客正好满足了我的需求，不出意外的话，这网站我是不会给朋友们说的。直接原因就是今年无人机视觉太难做了，反复折磨，想着记录一下被折磨的过程。导火索是看到wh学长的博客，很早之前写的博客还有callback，很戳我，我很喜欢这样的记录方式。所以立马就搭了这个博客。</p><h5 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h5><p>​不出意外的话，以后我对生活的一些感悟和经历、一些想法、学习的过程、对技术的理解(虽然也没啥理解)，都会在这里更新，希望我自己能坚持吧。</p>]]></content>
     
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
     
     
   </entry>
