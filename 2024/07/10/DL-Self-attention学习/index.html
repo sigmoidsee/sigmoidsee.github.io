@@ -16,16 +16,16 @@
   <meta name="author" content="guangda Sun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Self-Attention背景新的任务场景​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。 ​    通常情况下这种模型的输出有三种情况(如下图所示):       输入的每">
+    <meta name="description" content="Self-Attention背景新的任务场景​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。 ​    通常情况下这种模型的输出有三种情况(如下图所示):        输入的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[DL]Self-attention学习">
 <meta property="og:url" content="http://example.com/2024/07/10/DL-Self-attention%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Sigmoid">
-<meta property="og:description" content="Self-Attention背景新的任务场景​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。 ​    通常情况下这种模型的输出有三种情况(如下图所示):       输入的每">
+<meta property="og:description" content="Self-Attention背景新的任务场景​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。 ​    通常情况下这种模型的输出有三种情况(如下图所示):        输入的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/post_2/index_img.jpeg">
 <meta property="article:published_time" content="2024-07-10T07:40:32.000Z">
-<meta property="article:modified_time" content="2024-07-10T09:27:15.927Z">
+<meta property="article:modified_time" content="2024-07-10T11:01:43.562Z">
 <meta property="article:author" content="guangda Sun">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="注意力机制">
@@ -315,7 +315,8 @@
                 
                 <h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h4 id="新的任务场景"><a href="#新的任务场景" class="headerlink" title="新的任务场景"></a>新的任务场景</h4><p>​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。</p>
 <p>​    通常情况下这种模型的输出有三种情况(如下图所示):    </p>
-<p><img src="/.com//post_2/5.png" srcset="/img/loading.gif" lazyload alt="分类任务"></p>
+<img src="/.com//07/10/DL-Self-attention%E5%AD%A6%E4%B9%A0/1.png" srcset="/img/loading.gif" lazyload class title="说明">
+
 <ul>
 <li><p>输入的每个向量都对应一个输出 seqence labeling</p>
 <p>常用于词性标注等任务</p>
