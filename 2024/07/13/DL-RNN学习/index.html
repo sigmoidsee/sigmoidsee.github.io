@@ -16,26 +16,26 @@
   <meta name="author" content="guangda Sun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Self-Attention背景新的任务场景​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。 ​    通常情况下这种模型的输出有三种情况(如下图所示):       输入的每">
+    <meta name="description" content="RNN介绍背景介绍​    RNN(Recurrent Neural Network)一般中文译作循环神经网络，是一种序列模型，常用来处理 nlp 等领域的多种任务，包括但不限于语言生成、机器翻译、语音识别、音乐生成等等。在 nlp 领域的发展起了很重要的作用，也是很多研究者必要掌握的模型。 ​     ​    RNN 与 视觉领域的模型(如CNN)的很大区别在于， RNN 网络是将时序因素考虑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[DL]Self-attention学习">
-<meta property="og:url" content="http://example.com/2024/07/10/DL-Self-attention%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="[DL]RNN学习">
+<meta property="og:url" content="http://example.com/2024/07/13/DL-RNN%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Sigmoid">
-<meta property="og:description" content="Self-Attention背景新的任务场景​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。 ​    通常情况下这种模型的输出有三种情况(如下图所示):       输入的每">
+<meta property="og:description" content="RNN介绍背景介绍​    RNN(Recurrent Neural Network)一般中文译作循环神经网络，是一种序列模型，常用来处理 nlp 等领域的多种任务，包括但不限于语言生成、机器翻译、语音识别、音乐生成等等。在 nlp 领域的发展起了很重要的作用，也是很多研究者必要掌握的模型。 ​     ​    RNN 与 视觉领域的模型(如CNN)的很大区别在于， RNN 网络是将时序因素考虑">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/post_2/index_img.jpeg">
-<meta property="article:published_time" content="2024-07-10T07:40:32.000Z">
-<meta property="article:modified_time" content="2024-07-13T02:56:49.509Z">
+<meta property="og:image" content="http://example.com/img/post_3/index_img.jpeg">
+<meta property="article:published_time" content="2024-07-13T02:52:59.000Z">
+<meta property="article:modified_time" content="2024-07-13T03:58:21.667Z">
 <meta property="article:author" content="guangda Sun">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="nlp">
-<meta property="article:tag" content="注意力机制">
+<meta property="article:tag" content="RNN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/post_2/index_img.jpeg">
+<meta name="twitter:image" content="http://example.com/img/post_3/index_img.jpeg">
   
   
   
-  <title>[DL]Self-attention学习 - Sigmoid</title>
+  <title>[DL]RNN学习 - Sigmoid</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[DL]Self-attention学习"></span>
+            <span id="subtitle" data-typed-text="[DL]RNN学习"></span>
           
         </div>
 
@@ -241,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-10 10:40" pubdate>
-          2024年7月10日 上午
+        <time datetime="2024-07-13 05:52" pubdate>
+          2024年7月13日 凌晨
         </time>
       </span>
     
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.1k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          12 分钟
+          10 分钟
         
       </span>
     
@@ -309,80 +309,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[DL]Self-attention学习</h1>
+            <h1 id="seo-header">[DL]RNN学习</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h4 id="新的任务场景"><a href="#新的任务场景" class="headerlink" title="新的任务场景"></a>新的任务场景</h4><p>​    在前面的分类模型(如CNN等)的学习中, 模型的输入(如图像)是一个固定大小向量且在批输入时的各个输入向量通常并无直接关系, 有些任务下(如文字处理)需要变长的向量作为模型的输入, 且输入的各个向量之间有一定的语义关系，这时就要考虑改进模型以适应这种任务的需求。</p>
-<p>​    通常情况下这种模型的输出有三种情况(如下图所示):    </p>
-<p><img src="/images/post_2/5.png" srcset="/img/loading.gif" lazyload alt="模型输出的三种情况"></p>
-<ul>
-<li><p>输入的每个向量都对应一个输出 seqence labeling</p>
-<p>常用于词性标注等任务</p>
-</li>
-<li><p>输入的n个变量只对应一个输出</p>
-<p>常用于舆情分析(从一句话中抽取对某事的态度)、药物毒性检测。</p>
-</li>
-<li><p>输入的n个变量对应m个输出 seq2seq</p>
-<p>应用最广泛，机器翻译，分子预测，对话任务等。</p>
-</li>
-</ul>
-<h4 id="新的问题"><a href="#新的问题" class="headerlink" title="新的问题"></a>新的问题</h4><p>​    对 Sequence Labeling 而言，我们想要n个输入的变长向量对应n个输出，我们自然而然的想到可以给每个向量都加上一个 FC 层，这样可以得到n个输出向量，但是这样就完全把语义信息抛弃了，词与词之间的关系没有用上。像 “I saw a saw”这个例子，saw既有动词”看”的意思, 又有名词”锯子”的意思，但是如果你输入同样的 FC 层，输出肯定只能有一种结果。</p>
-<h3 id="Self-Attention-原理"><a href="#Self-Attention-原理" class="headerlink" title="Self-Attention 原理"></a>Self-Attention 原理</h3><h4 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h4><p>​    简单来说， Self-Attention 就是把各个词的相关度也作为输入输进了模型，如下图</p>
-<p><img src="/images/post_2/4.png" srcset="/img/loading.gif" lazyload alt="将相关度作为输入"></p>
-<p>​     然后再将输出作为输入进入 FC 层(可以再将FC层的输出作为输入再进self-attention层)</p>
-<p><img src="/images/post_2/1.png" srcset="/img/loading.gif" lazyload alt="Self-Attention的总览"></p>
-<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><p>​    目前主流算相关度的方法是Google提出的 Dot-product 方法，以算 a1 与 a2、 a3、 a4 的相关度为例:</p>
-<ul>
-<li><p>先算a1的q(quary, 查找的意思, 去找 a1 与其他输入的相关度) q &#x3D; Wq*a1 (??? 这里的Wq咋来的，是一个标量还是一个向量，算每个输入的 q 时这个Wq是一样的吗)</p>
-</li>
-<li><p>再算其他输入的k, k &#x3D; Wk * an (??? 这里的Wk也同问)，这里也有必要算一下 a1 的 k</p>
-</li>
-<li><p>将a1的q与每个k作点积运算，得到相关系数a1,1 &#x2F; a1,2 等等</p>
-</li>
-<li><p>将得到的相关系数经过一层softmax(不一定非要softmax, ReLU等也可以)得到a’1,1 &#x2F; a’1,2 等等</p>
-<p> <img src="/images/post_2/2.png" srcset="/img/loading.gif" lazyload alt="求相关度原理图"></p>
-</li>
-<li><p>算每个输入的 v &#x3D; Wv * a1(??? 这里的Wv也同问)</p>
-</li>
-<li><p>将每个 v与对应的 a’ 相乘再相加得到 b1, 如果 b1 很接近 v 与 a’1,2 的结果，那么就跟输入2更相关</p>
-<p> <img src="/images/post_2/3.png" srcset="/img/loading.gif" lazyload alt="求b的原理图"></p>
-</li>
-</ul>
-<h4 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h4><ul>
-<li><p>将各个input vector 合成矩阵 I, 李宏毅老师的 ppt 很明了, 竖着放置相当于将各个 vector 竖列组合。再将其分别与Wq、Wk、Wv作矩阵相乘运算, 得到 Q、 K、 V。每列即为算得的qi、ki、vi。</p>
-<p><img src="/images/post_2/6.png" srcset="/img/loading.gif" lazyload alt="求矩阵QKV"></p>
-</li>
-<li><p>再将 K.T 与 Q 作矩阵乘法, 得到A, 经过softmax得到A’, A’ 的第n行第m列即为 自注意力score a’n,m。</p>
-<p><img src="/images/post_2/7.png" srcset="/img/loading.gif" lazyload alt="求A&#39;"></p>
-</li>
-<li><p>再将 V 与矩阵 A’ 作矩阵乘法, 得到矩阵 O, 每一列即为 bi。</p>
-<p><img src="/images/post_2/8.png" srcset="/img/loading.gif" lazyload alt="求A&#39;"></p>
-</li>
-<li><p>上面整个流程如下图所示, 这个流程中所需要学习的参数就是 Wq、Wk、Wv。</p>
-<p><img src="/images/post_2/9.png" srcset="/img/loading.gif" lazyload alt="self-attention矩阵运算流程"></p>
-</li>
-</ul>
-<h3 id="Self-Attention-vs-CNN"><a href="#Self-Attention-vs-CNN" class="headerlink" title="Self-Attention vs CNN"></a>Self-Attention vs CNN</h3><p>   研究表明, Self-Attention 是一中更加 flexible 的 CNN, 而CNN 则是受限的 Self-Attention。self-attention是可以通过调整某些参数变成CNN的。</p>
-<p><img src="/images/post_2/13.png" srcset="/img/loading.gif" lazyload alt="Self-Attention vs CNN"></p>
-<h3 id="Muti-head-Self-Attention"><a href="#Muti-head-Self-Attention" class="headerlink" title="Muti-head Self-Attention"></a>Muti-head Self-Attention</h3><p>   关于多头注意力机制，其思路就是将每个q、k、v分成多路，然后照着一样的流程各自去算矩阵O’，最后再将矩阵O’通过运算化成矩阵O。</p>
-<p>   为了方便理解，可以这样想为什么要多头注意力机制: 如果只用一头注意力机制，那么这个q就负责这所有的相关性信息的搜索。如果用多头注意力机制，那么每个q就可以专门负责某一方面的搜寻，使得训练得更全面。</p>
-<p><img src="/images/post_2/10.png" srcset="/img/loading.gif" lazyload alt="多头注意力机制的原理图"></p>
-<p>​    将q分成多路的运算: [q1,1 , q1,2] &#x3D; W_q_muti x q</p>
-<p>​    K、V分成多路的运算也同理。</p>
-<p>​    这样需要学习的参数又多了 W_q_muti、W_k_muti、W_v_muti、W_o_muti(形状不同前面三个, 作用是将多个O’合成一个O,如图)。</p>
-<h3 id="Positional-Encoding"><a href="#Positional-Encoding" class="headerlink" title="Positional Encoding"></a>Positional Encoding</h3><p>​    上面提到的 Self-Attention 虽然将各个input vector 之间的关系考虑了进来, 但是仍然忽略了各个input vector 的位置关系。比如训练数据为语言的时候，最前面位置的词一般是主语。这时候就要考虑位置的因素了，这时候可以将每个输入向量加上对应的位置向量ei, 再进行self-attention。</p>
-<p><img src="/images/post_2/11.png" srcset="/img/loading.gif" lazyload alt="Positional Encoding"></p>
-<p>​    目前有种 ei 的实现方法, transformer 那篇论文中提出的 Postional Encoding 是一种手工实现的 ei, 事先将每个位置的 ei 都规定好了。当然还有将 ei 设置为待学习的参数进行学习的方法。</p>
-<p>​     <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37605642/article/details/132866365#:~:text=%E6%9C%AC%E8%8A%82%E4%BB%A5%20Sinusoidal">transform中的Postional Encoding</a></p>
-<h3 id="Self-Attention的应用"><a href="#Self-Attention的应用" class="headerlink" title="Self-Attention的应用"></a>Self-Attention的应用</h3><h4 id="Self-Attention-for-Speech"><a href="#Self-Attention-for-Speech" class="headerlink" title="Self-Attention for Speech"></a>Self-Attention for Speech</h4><p>​    语音一般是一个很长的序列, 如果将这个序列中的每个vector的关系都算score的话, 计算量会很大, 所以一般会将计算的范围限制在一定长度。</p>
-<p><img src="/images/post_2/12.png" srcset="/img/loading.gif" lazyload alt="Self-Attention for Speech"></p>
-<h4 id="Self-Attention-for-Image"><a href="#Self-Attention-for-Image" class="headerlink" title="Self-Attention for Image"></a>Self-Attention for Image</h4><p>   图像也可以作为序列做self-attention。一般输入的图像都是RGB通道的，这时每个 pixel 包含的三个值可以作为sequence的一个vector。这时候sequence的长度取决于图像的大小。</p>
-<p><img src="/images/post_2/13.png" srcset="/img/loading.gif" lazyload alt="Self-Attention for Image"></p>
-<h4 id="Self-Attention-for-Graph"><a href="#Self-Attention-for-Graph" class="headerlink" title="Self-Attention for Graph"></a>Self-Attention for Graph</h4><p>   图也可以做self-attention, 这时候只需要考虑每个结点与之相连结点的score即可。</p>
-<p><img src="/images/post_2/15.png" srcset="/img/loading.gif" lazyload alt="Self-Attention for Graph"></p>
+                <h3 id="RNN介绍"><a href="#RNN介绍" class="headerlink" title="RNN介绍"></a>RNN介绍</h3><h4 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h4><p>​    RNN(Recurrent Neural Network)一般中文译作循环神经网络，是一种序列模型，常用来处理 nlp 等领域的多种任务，包括但不限于语言生成、机器翻译、语音识别、音乐生成等等。在 nlp 领域的发展起了很重要的作用，也是很多研究者必要掌握的模型。</p>
+<p>​    <img src="/images/post_3/2.png" srcset="/img/loading.gif" lazyload alt="RNN应用领域"></p>
+<p>​    RNN 与 视觉领域的模型(如CNN)的很大区别在于， RNN 网络是将时序因素考虑在内的，在学习RNN时常见”时间步(time step)”这一概念。举例来说，在训练图像分类模型时，图片输入模型的顺序并无要求，但是在训练序列模型时，训练数据输入的顺序有了必要要求。</p>
+<h4 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h4><p>​    下面介绍的模型训练数据默认为 one-hot 编码。</p>
+<h5 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h5><p>​    通常情况下 RNN 架构的网络不会有很多层(一般不大于3层), 下面以一层举例, 每一层的输入是 a^t 和 x^t 这两个变量,  输出是 a^(t+1) 和 y^t ,  y^t 是由 sigmoid 激活函数激活的, 表示此处为各个 word 的概率, a^(t+1) 一般是由 tanh 激活函数激活的, 作为下一时间步网络的输入与 x^(t+1) 一同输入模型, 依此一直循环。a^(t+1) 和 y^t 在图中给出。</p>
+<p>​    <img src="/images/post_3/1.png" srcset="/img/loading.gif" lazyload alt="RNN前向传播原理"></p>
+<p>​     注意上面给出的原理图只是为了方便理解每个时间步干了什么, 把循环展开了, 真正的 RNN 结构图其实是循环的。</p>
+<p>​    <img src="/images/post_3/14.png" srcset="/img/loading.gif" lazyload alt="RNN原理图"></p>
+<p>​     从前向传播原理图中可以得出在训练过程中模型学习的参数是 Wa、Wy、Ba、By。</p>
+<h5 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h5><p>​    了解模型的反向传播可以帮我们更好的理解模型学习的过程, 其实单纯是我把反向传播过程的一些细节给忘了, 想回忆一下。关于反向传播基本概念和原理可以参考一下<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/261710847">这篇文章</a>。下图是关于 RNN 的反向传播过程。</p>
+<p>​    <img src="/images/post_3/3.png" srcset="/img/loading.gif" lazyload alt="RNN反向传播过程"></p>
+<p>​     图中的红色箭头表明的反向传播路径。简单来说就是定义一个损失函数(有的文章叫做误差函数)，根据前向传播得到的输出与实际值计算损失函数，再通过链式法则对权重(在这里是Wa\Wy\Ba\By)进行求导。</p>
+<p>​     将原来的权重值 — 求导的结果*lr 得到新的权重完成梯度下降的过程。</p>
+<h4 id="不同输出的-RNN-网络"><a href="#不同输出的-RNN-网络" class="headerlink" title="不同输出的 RNN 网络"></a>不同输出的 RNN 网络</h4><p>​    在RNN应用领域那张图上可以看到 RNN 有很多应用领域, 模型的输入和输出并不一定是严格一对一的，特定的任务情境下 RNN 网络的输出数量并不一定等于输入的数量, 因此要根据特定任务场景调整网络的输出。</p>
+<h5 id="一对多网络"><a href="#一对多网络" class="headerlink" title="一对多网络"></a>一对多网络</h5><p>   一对多常用在生成任务上, 比如音乐的生成, 输入可以为空或者一个表示音乐基调的单词, 输出则为不等长的音符组成音乐，这种网络结构如下图所示。</p>
+<p>​        <img src="/images/post_3/6.png" srcset="/img/loading.gif" lazyload alt="One2Many"></p>
+<h5 id="多对一网络"><a href="#多对一网络" class="headerlink" title="多对一网络"></a>多对一网络</h5><p>​    多对一网络常用在舆论检测上, 比如饭店评价通过输入一段话来评判客户对这家饭店的打星, 比如打星范围为1-5, 那么模型的唯一输出则为打星值。这种网络结构如下图所示。</p>
+<p>​    <img src="/images/post_3/7.png" srcset="/img/loading.gif" lazyload alt="Many2One">    </p>
+<h5 id="多对多网络"><a href="#多对多网络" class="headerlink" title="多对多网络"></a>多对多网络</h5><p>​    这种网络最常见, 有时候输入的序列长度跟输出序列长度并不相等, 比如机器翻译应用。这种网络结构如下图所示，我们常将带有 x 输入的模型的前半部分叫做 encoder(编码器), 带有 y 输出的模型后半部分叫做 decoder(译码器)。</p>
+<p>​    <img src="/images/post_3/15.png" srcset="/img/loading.gif" lazyload alt="Many2Many">        </p>
+<h4 id="双向-RNN-BRNN"><a href="#双向-RNN-BRNN" class="headerlink" title="双向 RNN (BRNN)"></a>双向 RNN (BRNN)</h4><p>   RNN 网络虽然解决了序列输入的训练问题，但是如果碰到类似于下面这种训练输入情况</p>
+<figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs smalltalk"><span class="hljs-comment">&quot;Hello, Teddy Bear is on sale.&quot;</span><br><span class="hljs-comment">&quot;Hello, Teddy is coming.&quot;</span><br></code></pre></td></tr></table></figure>
 
+<p>   RNN 在序列预测时, 如果前面的三个词是 “Hello, Teddy”, 这时候模型很难正确预测下面的输出是什么，这也是单向 RNN 网络的局限性，为了解决这种问题，出现了双向循环网络(Bidirectional RNN), 从左向右与从右向左同时开始训练。原理图如下所示。</p>
+<p>​    <img src="/images/post_3/12.png" srcset="/img/loading.gif" lazyload alt="BRNN原理图">            </p>
+<h4 id="深层-RNN"><a href="#深层-RNN" class="headerlink" title="深层 RNN"></a>深层 RNN</h4>
                 
               </div>
             
@@ -419,7 +376,7 @@
       
         <a href="/tags/nlp/" class="print-no-link">#nlp</a>
       
-        <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" class="print-no-link">#注意力机制</a>
+        <a href="/tags/RNN/" class="print-no-link">#RNN</a>
       
     </div>
   
@@ -431,8 +388,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[DL]Self-attention学习</div>
-      <div>http://example.com/2024/07/10/DL-Self-attention学习/</div>
+      <div>[DL]RNN学习</div>
+      <div>http://example.com/2024/07/13/DL-RNN学习/</div>
     </div>
     <div class="license-meta">
       
@@ -444,7 +401,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月10日</div>
+          <div>2024年7月13日</div>
         </div>
       
       
@@ -476,18 +433,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/13/DL-RNN%E5%AD%A6%E4%B9%A0/" title="[DL]RNN学习">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[DL]RNN学习</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/09/%E7%95%B8%E5%BD%A2%E7%9A%84%E5%86%85%E5%8D%B7/" title="畸形的内卷">
-                        <span class="hidden-mobile">畸形的内卷</span>
+                      <a href="/2024/07/10/DL-Self-attention%E5%AD%A6%E4%B9%A0/" title="[DL]Self-attention学习">
+                        <span class="hidden-mobile">[DL]Self-attention学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

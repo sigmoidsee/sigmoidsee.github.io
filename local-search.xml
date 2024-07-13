@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>[DL]RNN学习</title>
+    <link href="/2024/07/13/DL-RNN%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2024/07/13/DL-RNN%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="RNN介绍"><a href="#RNN介绍" class="headerlink" title="RNN介绍"></a>RNN介绍</h3><h4 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h4><p>​    RNN(Recurrent Neural Network)一般中文译作循环神经网络，是一种序列模型，常用来处理 nlp 等领域的多种任务，包括但不限于语言生成、机器翻译、语音识别、音乐生成等等。在 nlp 领域的发展起了很重要的作用，也是很多研究者必要掌握的模型。</p><p>​    <img src="/images/post_3/2.png" alt="RNN应用领域"></p><p>​    RNN 与 视觉领域的模型(如CNN)的很大区别在于， RNN 网络是将时序因素考虑在内的，在学习RNN时常见”时间步(time step)”这一概念。举例来说，在训练图像分类模型时，图片输入模型的顺序并无要求，但是在训练序列模型时，训练数据输入的顺序有了必要要求。</p><h4 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h4><p>​    下面介绍的模型训练数据默认为 one-hot 编码。</p><h5 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h5><p>​    通常情况下 RNN 架构的网络不会有很多层(一般不大于3层), 下面以一层举例, 每一层的输入是 a^t 和 x^t 这两个变量,  输出是 a^(t+1) 和 y^t ,  y^t 是由 sigmoid 激活函数激活的, 表示此处为各个 word 的概率, a^(t+1) 一般是由 tanh 激活函数激活的, 作为下一时间步网络的输入与 x^(t+1) 一同输入模型, 依此一直循环。a^(t+1) 和 y^t 在图中给出。</p><p>​    <img src="/images/post_3/1.png" alt="RNN前向传播原理"></p><p>​     注意上面给出的原理图只是为了方便理解每个时间步干了什么, 把循环展开了, 真正的 RNN 结构图其实是循环的。</p><p>​    <img src="/images/post_3/14.png" alt="RNN原理图"></p><p>​     从前向传播原理图中可以得出在训练过程中模型学习的参数是 Wa、Wy、Ba、By。</p><h5 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h5><p>​    了解模型的反向传播可以帮我们更好的理解模型学习的过程, 其实单纯是我把反向传播过程的一些细节给忘了, 想回忆一下。关于反向传播基本概念和原理可以参考一下<a href="https://zhuanlan.zhihu.com/p/261710847">这篇文章</a>。下图是关于 RNN 的反向传播过程。</p><p>​    <img src="/images/post_3/3.png" alt="RNN反向传播过程"></p><p>​     图中的红色箭头表明的反向传播路径。简单来说就是定义一个损失函数(有的文章叫做误差函数)，根据前向传播得到的输出与实际值计算损失函数，再通过链式法则对权重(在这里是Wa\Wy\Ba\By)进行求导。</p><p>​     将原来的权重值 — 求导的结果*lr 得到新的权重完成梯度下降的过程。</p><h4 id="不同输出的-RNN-网络"><a href="#不同输出的-RNN-网络" class="headerlink" title="不同输出的 RNN 网络"></a>不同输出的 RNN 网络</h4><p>​    在RNN应用领域那张图上可以看到 RNN 有很多应用领域, 模型的输入和输出并不一定是严格一对一的，特定的任务情境下 RNN 网络的输出数量并不一定等于输入的数量, 因此要根据特定任务场景调整网络的输出。</p><h5 id="一对多网络"><a href="#一对多网络" class="headerlink" title="一对多网络"></a>一对多网络</h5><p>   一对多常用在生成任务上, 比如音乐的生成, 输入可以为空或者一个表示音乐基调的单词, 输出则为不等长的音符组成音乐，这种网络结构如下图所示。</p><p>​        <img src="/images/post_3/6.png" alt="One2Many"></p><h5 id="多对一网络"><a href="#多对一网络" class="headerlink" title="多对一网络"></a>多对一网络</h5><p>​    多对一网络常用在舆论检测上, 比如饭店评价通过输入一段话来评判客户对这家饭店的打星, 比如打星范围为1-5, 那么模型的唯一输出则为打星值。这种网络结构如下图所示。</p><p>​    <img src="/images/post_3/7.png" alt="Many2One">    </p><h5 id="多对多网络"><a href="#多对多网络" class="headerlink" title="多对多网络"></a>多对多网络</h5><p>​    这种网络最常见, 有时候输入的序列长度跟输出序列长度并不相等, 比如机器翻译应用。这种网络结构如下图所示，我们常将带有 x 输入的模型的前半部分叫做 encoder(编码器), 带有 y 输出的模型后半部分叫做 decoder(译码器)。</p><p>​    <img src="/images/post_3/15.png" alt="Many2Many">        </p><h4 id="双向-RNN-BRNN"><a href="#双向-RNN-BRNN" class="headerlink" title="双向 RNN (BRNN)"></a>双向 RNN (BRNN)</h4><p>   RNN 网络虽然解决了序列输入的训练问题，但是如果碰到类似于下面这种训练输入情况</p><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs smalltalk"><span class="hljs-comment">&quot;Hello, Teddy Bear is on sale.&quot;</span><br><span class="hljs-comment">&quot;Hello, Teddy is coming.&quot;</span><br></code></pre></td></tr></table></figure><p>   RNN 在序列预测时, 如果前面的三个词是 “Hello, Teddy”, 这时候模型很难正确预测下面的输出是什么，这也是单向 RNN 网络的局限性，为了解决这种问题，出现了双向循环网络(Bidirectional RNN), 从左向右与从右向左同时开始训练。原理图如下所示。</p><p>​    <img src="/images/post_3/12.png" alt="BRNN原理图">            </p><h4 id="深层-RNN"><a href="#深层-RNN" class="headerlink" title="深层 RNN"></a>深层 RNN</h4>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>深度学习</tag>
+      
+      <tag>nlp</tag>
+      
+      <tag>RNN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[DL]Self-attention学习</title>
     <link href="/2024/07/10/DL-Self-attention%E5%AD%A6%E4%B9%A0/"/>
     <url>/2024/07/10/DL-Self-attention%E5%AD%A6%E4%B9%A0/</url>
@@ -21,6 +50,8 @@
     <tags>
       
       <tag>深度学习</tag>
+      
+      <tag>nlp</tag>
       
       <tag>注意力机制</tag>
       
