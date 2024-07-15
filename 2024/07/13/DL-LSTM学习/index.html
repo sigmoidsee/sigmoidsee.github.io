@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/post_4/index_img.jpeg">
 <meta property="article:published_time" content="2024-07-13T07:44:26.000Z">
-<meta property="article:modified_time" content="2024-07-13T11:50:21.503Z">
+<meta property="article:modified_time" content="2024-07-15T01:14:39.012Z">
 <meta property="article:author" content="guangda Sun">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="nlp">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          947 字
+          917 字
         
       </span>
     
@@ -354,9 +354,10 @@
 <p>​     从图中可以看到, 相比 RNN, LSTM 的输入由2个(a和x)变为了3个(a&#x2F;x&#x2F;c)，图中的 c~^(t)就是原来 RNN的输出a^(t)。但是在 LSTM 中, a与x要经过更新门、遗忘门、输出门三个门再与c^(t-1)作相应的运算才能得到a^t、c^t, a^t经过 softmax 得到输出 y^t。计算过程如下图所示(是从吴恩达老师课上截的图，但是真的易懂)</p>
 <p><img src="/images/post_3/10.png" srcset="/img/loading.gif" lazyload alt="LSTM计算过程"></p>
 <p>​    从图中可以得到需要学习的参数, 原来 RNN 的 Wa、Ba变成了 Wc、Bc。又新增了 Wu、Bu、Wf、Bf、Wo、Bo这六个权重。</p>
-<p>&lt;font *style*&#x3D;”background: #b3d1ed”&gt;ssss</p>
-<p>&lt;font *color*&#x3D;”#ffffff”&gt;2024.7.13: 渐渐地懂了序列模型的一般结构, 感觉 LSTM 的思想好牛啊, 感觉已经是当时局限思想情况下的一个极致的时间序列模型了</p>
-<p>&lt;font *style*&#x3D;”color: #FF00BB”&gt;使用十六进制颜色值</p>
+<div class="note note-info">
+            <p>​	2024.7.13: 渐渐地懂了序列模型的一般结构, 感觉 LSTM 的思想好牛啊, 感觉已经是当时局限思想情况下的一个极致的时间序列模型了</p>
+          </div>
+
 <p>​      再结合 BRNN 的结构出现了双向的 LSTM 网络结构, 目前使用 RNN 模型大部分都是双向的 LSTM 结构，有一种集百家之所长的感觉。双向 LSTM 结构就不细讲了，知道了 BRNN 和 LSTM 结构很容易就能理解 LSTM 结构。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    从 RNN 到 LSTM, 原来模型的发展从来都不是一蹴而就的, 人们永远无法全面的预测到当前提出的模型所存在的所有缺陷, 模型的发展给我一种问题导向的感觉, CNN 的出现解决了图像分类的问题, 但是时序预测还卡着人们, 接着出现了 RNN, 但是 RNN 的出现暴露了很多缺陷, 继而又出现了 LSTM, LSTM 虽然解决了 RNN的一些问题，但是仍未跳脱出时序顺序的输入, 可能当时的人们也认为时序顺序的输入是解决一些时序预测问题的最佳解决策略了, 后来 transform 的出现又颠覆了这一认知。</p>
 <blockquote>
