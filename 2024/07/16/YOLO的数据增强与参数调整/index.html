@@ -16,25 +16,27 @@
   <meta name="author" content="guangda Sun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Sigmoid的个人博客">
+    <meta name="description" content="YOLO的数据增强与参数调整前言​	被某比赛的视觉任务反复折磨之后, 我发现 yolo 的泛化性能不仅在目标检测领域, 甚至在图像分类领域都有着很高的地位。 ​	事情是这样的, 我拿 resnet 的各个变种去训练 cifar100 , 训练出的模型泛化性能极其不行, 经常过拟合, 但是如果同样的输入放到 yolo 模型里面得到的输出正确率竟然高的惊人。 ​	说明一下前提, 我的输入仍然是训练集的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[DL]pytorch模型训练pipline总结">
-<meta property="og:url" content="http://example.com/2024/07/16/DL-pytorch%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83pipline%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="YOLO的数据增强与参数调整">
+<meta property="og:url" content="http://example.com/2024/07/16/YOLO%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E4%B8%8E%E5%8F%82%E6%95%B0%E8%B0%83%E6%95%B4/index.html">
 <meta property="og:site_name" content="Sigmoid">
-<meta property="og:description" content="Sigmoid的个人博客">
+<meta property="og:description" content="YOLO的数据增强与参数调整前言​	被某比赛的视觉任务反复折磨之后, 我发现 yolo 的泛化性能不仅在目标检测领域, 甚至在图像分类领域都有着很高的地位。 ​	事情是这样的, 我拿 resnet 的各个变种去训练 cifar100 , 训练出的模型泛化性能极其不行, 经常过拟合, 但是如果同样的输入放到 yolo 模型里面得到的输出正确率竟然高的惊人。 ​	说明一下前提, 我的输入仍然是训练集的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/post_6/index_img.jpg">
-<meta property="article:published_time" content="2024-07-16T03:48:59.000Z">
-<meta property="article:modified_time" content="2024-07-16T03:50:29.352Z">
+<meta property="og:image" content="http://example.com/img/post_7/index_img.jpeg">
+<meta property="article:published_time" content="2024-07-16T11:48:43.000Z">
+<meta property="article:modified_time" content="2024-07-16T12:00:07.149Z">
 <meta property="article:author" content="guangda Sun">
 <meta property="article:tag" content="深度学习">
-<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="cv">
+<meta property="article:tag" content="目标检测">
+<meta property="article:tag" content="yolo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/post_6/index_img.jpg">
+<meta name="twitter:image" content="http://example.com/img/post_7/index_img.jpeg">
   
   
   
-  <title>[DL]pytorch模型训练pipline总结 - Sigmoid</title>
+  <title>YOLO的数据增强与参数调整 - Sigmoid</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[DL]pytorch模型训练pipline总结"></span>
+            <span id="subtitle" data-typed-text="YOLO的数据增强与参数调整"></span>
           
         </div>
 
@@ -240,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-16 06:48" pubdate>
-          2024年7月16日 早上
+        <time datetime="2024-07-16 14:48" pubdate>
+          2024年7月16日 下午
         </time>
       </span>
     
@@ -252,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          411 字
         
       </span>
     
@@ -263,7 +265,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -308,12 +310,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[DL]pytorch模型训练pipline总结</h1>
+            <h1 id="seo-header">YOLO的数据增强与参数调整</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h2 id="YOLO的数据增强与参数调整"><a href="#YOLO的数据增强与参数调整" class="headerlink" title="YOLO的数据增强与参数调整"></a>YOLO的数据增强与参数调整</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​	被某比赛的视觉任务反复折磨之后, 我发现 yolo 的泛化性能不仅在目标检测领域, 甚至在图像分类领域都有着很高的地位。</p>
+<p>​	事情是这样的, 我拿 resnet 的各个变种去训练 cifar100 , 训练出的模型泛化性能极其不行, 经常过拟合, 但是如果同样的输入放到 yolo 模型里面得到的输出正确率竟然高的惊人。</p>
+<p>​	说明一下前提, 我的输入仍然是训练集的东西, 但是由于实际环境的影响跟原来的训练集可能在饱和度、色调、亮度等方面都有不同。</p>
+<p>​	曾经用 cifar100 训练 resnet18&#x2F;34 的时候, 模型的过拟合现象严重, 我也曾经试着将预处理加上亮度、色调、饱和度的随机变化, 但是效果都很一般。</p>
+<p>​	因此,  我很好奇 YOLO 在数据增强阶段应用了什么样的操作, 另外, 在 yolo 的训练结果的 weight 中有 best_weights 和 last_weights 这两个权重, 我也想知道它评判每一轮的权重是否为 best 的依据是什么(？是不是只是简单的评价一下哪一轮的测试集正确率最高哪个就是best)</p>
+<div class="note note-info">
+            <p>​	2024.7.16: 再挖个坑, 等自己填, 感觉要等一段时间, 最近有点忙, 估计没工夫去看 yolo 源码, 或许可以直接GPT, 但是最好还是自己在源码里面找到这部分逻辑, 毕竟眼见为实。等填坑的时候一定要 callback 一下这里！</p>
+          </div>
+
                 
               </div>
             
@@ -348,7 +358,11 @@
       
         <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="print-no-link">#深度学习</a>
       
-        <a href="/tags/pytorch/" class="print-no-link">#pytorch</a>
+        <a href="/tags/cv/" class="print-no-link">#cv</a>
+      
+        <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="print-no-link">#目标检测</a>
+      
+        <a href="/tags/yolo/" class="print-no-link">#yolo</a>
       
     </div>
   
@@ -360,8 +374,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[DL]pytorch模型训练pipline总结</div>
-      <div>http://example.com/2024/07/16/DL-pytorch模型训练pipline总结/</div>
+      <div>YOLO的数据增强与参数调整</div>
+      <div>http://example.com/2024/07/16/YOLO的数据增强与参数调整/</div>
     </div>
     <div class="license-meta">
       
@@ -405,18 +419,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/16/YOLO%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E4%B8%8E%E5%8F%82%E6%95%B0%E8%B0%83%E6%95%B4/" title="YOLO的数据增强与参数调整">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">YOLO的数据增强与参数调整</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/16/DL-%E5%9F%BA%E4%BA%8ELSTM%E7%9A%84%E6%96%87%E6%9C%AC%E6%83%85%E7%BB%AA%E8%AF%86%E5%88%AB%E5%AE%9E%E6%88%98/" title="[DL]基于LSTM的文本情绪识别实战">
-                        <span class="hidden-mobile">[DL]基于LSTM的文本情绪识别实战</span>
+                      <a href="/2024/07/16/DL-pytorch%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83pipline%E6%80%BB%E7%BB%93/" title="[DL]pytorch模型训练pipline总结">
+                        <span class="hidden-mobile">[DL]pytorch模型训练pipline总结</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
