@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/post_8/index_img.jpg">
 <meta property="article:published_time" content="2024-07-27T04:48:10.000Z">
-<meta property="article:modified_time" content="2024-07-27T12:18:50.419Z">
+<meta property="article:modified_time" content="2024-07-27T12:20:10.405Z">
 <meta property="article:author" content="guangda Sun">
 <meta property="article:tag" content="硬盘">
 <meta property="article:tag" content="重装系统">
@@ -324,7 +324,7 @@
 <p>​	关于换硬盘, 听说别的牌子的笔记本要拔电(我指的是电池对主板的供电,拆了后盖才能看见), 但是据说dell 拔电装硬盘会导致静电累积, 不用拔电直接换硬盘就行, 我没有拔电, 直接换的硬盘, 目前看来还挺好的, 没什么大毛病。</p>
 <h3 id="装系统"><a href="#装系统" class="headerlink" title="装系统"></a>装系统</h3><p>​	在装系统之前需要知道的是, dell 的 BIOS menu 是 F2, BIOS setup 是 F12。</p>
 <h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><p>​	 正常情况下重装系统只需要进入 BIOS setup 选择启动盘进入安装系统引导就行, 但是这一次是换装硬盘之后重新装系统, 如果直接进入启动盘装 window 会出现下面的情况, 找不到硬盘。</p>
-<p><img src="/images/post_5/disknotfind.jpg" srcset="/img/loading.gif" lazyload alt="硬盘槽位置"></p>
+<p><img src="/images/post_5/disknotfind.png" srcset="/img/loading.gif" lazyload alt="无法找到硬盘"></p>
 <p>​	解决方法看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1em4y1j7fR/?buvid=XY9604D9E1B7EE25A631B0C948D08D829ADCB&from_spmid=main.my-history.0.0&is_story_h5=false&mid=DrENeUX2dmjk3L1W1TBVKg==&p=1&plat_id=114&share_from=ugc&share_medium=android&share_plat=android&share_session_id=1414ce1f-581d-4e73-a327-44b442fc1cf1&share_source=QQ&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1722072183&unique_k=sYXtCTX&up_id=1369219423">这里</a>, 具体解决步骤是 F2进入BIOS menu -&gt; storage -&gt; 勾选 AHCI&#x2F;NVMe -&gt; 弹出的对话框勾选再OK -&gt; apply changes</p>
 <p>​	这样window安装时就能扫到新换的硬盘了。</p>
 <h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><p>​	安装完 windows 之后就要安装 ubuntu, 需要重新制作一个启动盘, 记得提前分出盘来给 ubuntu 使用, 制作好启动盘后其他的流程跟装 windows 一样, 注意分区的选取, 在 Installation type 界面选择 something else, 这样就自定义分区了。关于安装 ubuntu 系统, <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42313591/article/details/136007211">这篇文章</a>讲的特别好, 少有的从准备阶段到最后的注意事项都讲到了, 而且还会讲每一步这样做的原因, 强烈推荐！</p>
