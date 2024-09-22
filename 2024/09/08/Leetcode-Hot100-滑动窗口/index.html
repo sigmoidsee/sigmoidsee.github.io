@@ -16,24 +16,25 @@
   <meta name="author" content="guangda Sun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="流水账的生活,偶尔也闪烁​	灵感来自于别人博客记录生活, 时不时还会有 callback 的这种记录方式我非常喜欢, 因此创建此篇博客来记录我的生活, 虽然有些流水账, 但是偶尔也是有那么几点闪光的。 20247 月​	7.17: 中午的时候无意间看了一部剧《少年歌行》, 从第一集就开始高能, 诶其实我觉得有些电视剧能抓人的点就在于他在前几集就能抓住人心让人想看下去, 有些剧情矛盾在5、6集才开始">
+    <meta name="description" content="Leetcode Hot100 滑动窗口3. 无重复字符的最长子串题目描述, 看这里 题解滑动窗口的典型题目, 思路也非常容易想到, 主要是实现方式上要注意一下。这道题的思路就是准备两个指针, 右指针一直往右跑直到子串有了重复字符,  记录子串的长度, 此时左指针开始往右移动, 直到在左右指针内没有重复字符, 右指针接着移动重复上述过程即可 正确答案： 1234567891011121314151">
 <meta property="og:type" content="article">
-<meta property="og:title" content="流水账的生活,偶尔也闪烁">
-<meta property="og:url" content="http://example.com/2024/07/07/%E6%B5%81%E6%B0%B4%E8%B4%A6%E7%9A%84%E7%94%9F%E6%B4%BB-%E5%81%B6%E5%B0%94%E4%B9%9F%E9%97%AA%E7%83%81/index.html">
+<meta property="og:title" content="[Leetcode]Hot100-滑动窗口">
+<meta property="og:url" content="http://example.com/2024/09/08/Leetcode-Hot100-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.html">
 <meta property="og:site_name" content="Sigmoid">
-<meta property="og:description" content="流水账的生活,偶尔也闪烁​	灵感来自于别人博客记录生活, 时不时还会有 callback 的这种记录方式我非常喜欢, 因此创建此篇博客来记录我的生活, 虽然有些流水账, 但是偶尔也是有那么几点闪光的。 20247 月​	7.17: 中午的时候无意间看了一部剧《少年歌行》, 从第一集就开始高能, 诶其实我觉得有些电视剧能抓人的点就在于他在前几集就能抓住人心让人想看下去, 有些剧情矛盾在5、6集才开始">
+<meta property="og:description" content="Leetcode Hot100 滑动窗口3. 无重复字符的最长子串题目描述, 看这里 题解滑动窗口的典型题目, 思路也非常容易想到, 主要是实现方式上要注意一下。这道题的思路就是准备两个指针, 右指针一直往右跑直到子串有了重复字符,  记录子串的长度, 此时左指针开始往右移动, 直到在左右指针内没有重复字符, 右指针接着移动重复上述过程即可 正确答案： 1234567891011121314151">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/post_0/index_img.jpg">
-<meta property="article:published_time" content="2024-07-07T08:50:56.000Z">
-<meta property="article:modified_time" content="2024-09-14T12:06:11.189Z">
+<meta property="og:image" content="http://example.com/img/post_11/1.png">
+<meta property="article:published_time" content="2024-09-08T03:28:31.000Z">
+<meta property="article:modified_time" content="2024-09-08T03:57:36.825Z">
 <meta property="article:author" content="guangda Sun">
-<meta property="article:tag" content="琐事">
+<meta property="article:tag" content="算法题">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/post_0/index_img.jpg">
+<meta name="twitter:image" content="http://example.com/img/post_11/1.png">
   
   
   
-  <title>流水账的生活,偶尔也闪烁 - Sigmoid</title>
+  <title>[Leetcode]Hot100-滑动窗口 - Sigmoid</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="流水账的生活,偶尔也闪烁"></span>
+            <span id="subtitle" data-typed-text="[Leetcode]Hot100-滑动窗口"></span>
           
         </div>
 
@@ -239,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-07 16:50" pubdate>
-          2024年7月7日 下午
+        <time datetime="2024-09-08 11:28" pubdate>
+          2024年9月8日 上午
         </time>
       </span>
     
@@ -251,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          329 字
         
       </span>
     
@@ -262,7 +263,7 @@
         
         
         
-          19 分钟
+          3 分钟
         
       </span>
     
@@ -307,31 +308,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">流水账的生活,偶尔也闪烁</h1>
+            <h1 id="seo-header">[Leetcode]Hot100-滑动窗口</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="流水账的生活-偶尔也闪烁"><a href="#流水账的生活-偶尔也闪烁" class="headerlink" title="流水账的生活,偶尔也闪烁"></a>流水账的生活,偶尔也闪烁</h1><p>​	灵感来自于别人博客记录生活, 时不时还会有 callback 的这种记录方式我非常喜欢, 因此创建此篇博客来记录我的生活, 虽然有些流水账, 但是偶尔也是有那么几点闪光的。</p>
-<h2 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h2><h3 id="7-月"><a href="#7-月" class="headerlink" title="7 月"></a>7 月</h3><p>​	<em><strong><u>7.17</u></strong></em>: 中午的时候无意间看了一部剧《少年歌行》, 从第一集就开始高能, 诶其实我觉得有些电视剧能抓人的点就在于他在前几集就能抓住人心让人想看下去, 有些剧情矛盾在5、6集才开始显现的平铺直叙的剧反而对我没有太大的吸引的点。(这部剧好看到我甚至翘了一个班去追, 一下午看了10集, 以后得控制一下, 不然吃饭的时候没看的了……)</p>
-<div class="note note-info">
-            <ul><li>2024.7.21: 在昨天把这部剧追完了, 感觉心里空落落的, 不得不吐槽一下这个男主的演技真的烂, 全程一个表情, 我不好评价, 反正我不喜欢, 但是这个剧情真的很赞！环环相扣, 大概是我看过的古装仙侠剧里面one of the best了。萧瑟、无心、雷无桀、大师兄唐莲、司空千落…….. 江湖再见！</li></ul>
-          </div>
+                <h1 id="Leetcode-Hot100-滑动窗口"><a href="#Leetcode-Hot100-滑动窗口" class="headerlink" title="Leetcode Hot100 滑动窗口"></a>Leetcode Hot100 滑动窗口</h1><h2 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h2><p>题目描述, 看<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/?envType=study-plan-v2&envId=top-100-liked">这里</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>滑动窗口的典型题目, 思路也非常容易想到, 主要是实现方式上要注意一下。这道题的思路就是准备两个指针, 右指针一直往右跑直到子串有了重复字符,  记录子串的长度, 此时左指针开始往右移动, 直到在左右指针内没有重复字符, 右指针接着移动重复上述过程即可</p>
+<p>正确答案：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        unordered_set&lt;<span class="hljs-type">char</span>&gt; lookup;   <span class="hljs-comment">//无序集合，用于存放临时子串</span><br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++)&#123;    <span class="hljs-comment">//滑动窗口，窗口右端每次向右移动一个字符</span><br>            <span class="hljs-keyword">while</span> (lookup.<span class="hljs-built_in">find</span>(s[i]) != lookup.<span class="hljs-built_in">end</span>())&#123;  <span class="hljs-comment">//若在子串中找到该字符</span><br>                lookup.<span class="hljs-built_in">erase</span>(s[left]);  <span class="hljs-comment">//此子串不符合条件，窗口最左端元素移出</span><br>                left ++;<br>            &#125;<br>            ans = <span class="hljs-built_in">max</span>(ans,i-left<span class="hljs-number">+1</span>);  <span class="hljs-comment">//存放最长有效子串的长度</span><br>            lookup.<span class="hljs-built_in">insert</span>(s[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;  <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>​	<em><strong><u>7.21</u></strong></em>: 准备了好久的比赛终于完成了(5月初-7月21), 有惊无险, 满分拿下。过程真的很惊险, 比赛是20号晚上8点进行的, 飞机飞到二维码处突然不动了, 只好接管飞机, 第一次起飞草草了事了。后来把飞机的高度调高才刚刚好识别出来, 第二次满分拿下了, 实在是万万没想到会在这里出问题。 事后复盘我感觉应该是二维码的三个定位点在晚上被灯照得无法确定了。总的来说还是有惊无险吧, 期待江苏的国赛会怎样呢？</p>
-<p>​	看到了优酷的少白这部剧, 是少歌的前传, 看了前面几集感觉还行, 准备明天回家的高铁上看一下。希望明天的高铁上有插座, 不然我手机没电了可完蛋了。	</p>
-<p>​	<em><strong><u>7.23</u></strong></em>: 昨晚上十点回到家后收拾收拾就睡了,  现在正好有时间, 记录一下这两天的生活。今天早上, 去县医院困扰我已久的牙疼治好了, 直接把那颗坏了的智齿给拔掉了, 医生人挺好, 动作也很利索, 给我打了三针麻药(没想象中那么疼)就用钳子给我卸下来了, 整个过程也就不到两分钟, 现在麻药劲过去了, 自我感觉良好。中午吃了火锅, 在学校没有吃过, 没人陪我吃。下午去大姨家看望姥爷, 聊了一些家长里短, 突然有点感慨时间过得好快啊, 两年之后我再看到我自己的这篇博客会在想什么呢？爷爷收养了一直小猫, 通体灰色的, 我一直对猫狗不是很喜欢, 但也谈不上讨厌, 以往家里的猫狗失踪或是去世我其实没太大感觉, 但是这个小灰猫给了我不一样的感觉。后面的几天开启田园生活了。</p>
-<p>​	<em><strong><u>7.27</u></strong></em>: 终于回归了！应该是前天, 给我的电脑换了一个2T的硬盘, 终于不用再为没有空间发愁了, 装完 ubuntu 后给根目录分了200G, 给home目录分了500G,我也不知道自己会不会后悔, 就是说这个home目录有必要分这么大吗, 全给到根目录不行吗? (是跟着网上的教程分的)不是很理解, 将来也不知道我会不会后悔, 我会把换硬盘的经历和教训写一篇博客以供后面参考, 这几天看了《唐朝诡事录》, 感觉还挺好看的。我要把搜狗输入安装一下, 太难受了这个自带的输入法！</p>
-<h3 id="8-月"><a href="#8-月" class="headerlink" title="8 月"></a>8 月</h3><p>​	<em><strong><u>8.1</u></strong></em>: 这几天把新装的 ubuntu 系统拾掇了一遍, 把该装的都装了一下, 现在的 ubuntu 感觉比上一个好用多了。 昨天姑姑姐姐来家里玩了, 叙了叙旧。这几天有在关注巴黎奥运会, 为奥运健儿们加油！ 《唐诡》已经看到第二部了, 说实话真的不错, 最近一直没看 《少白》, 打算留着在高铁上打发时间再看, 但最近看这部剧的风评急转直下, 挺难评的。抽象组委会竟然改比赛时间地点了, 一下提前了几天, 真无语, 我在想我比完赛要不要回家, 我应该会回家的吧。要去衡水了, 祝我顺利。不说了, 去训模型了。</p>
-<p>​	<em><strong><u>8.5</u></strong></em>: 2号见了她, 很喜欢。昨天去了大姨家, 但是下了暴雨没能给姥姥上坟, 也没回来家, 索性就在大姨家住了一晚。昨晚上小丁哥给我们烤串，除了有点咸之外味道很好！ 今天拿了几件快递, 买了一些礼物。《唐诡西行》看完了, 我心里的 top1 直接投给供养人, top2 给到仵作之死, top3 是上仙坊的来信。供养人无论从立意、剧情、演技、节奏、合理性上面, 都堪称一绝, 很喜欢, 可怜的多宝。仵作之死独孤羊好惨, “独孤苍苍而娘子青青”, 休书那一段真的很感人.。上仙坊不用多说, 这个李云罪该万死。这几天发生的事情对我来说还挺特别的, 几个月以后一定要 callback 一下！</p>
-<p>​	<em><strong><u>8.10&lt;七夕&gt;</u></strong></em>: 今天成了有对象的人嘻嘻嘻嘻嘻嘻。在感情中主动的这门必修课, 我好像永远学不会, 但是你一直在给我台阶, 教我主动。第一封<a target="_blank" rel="noopener" href="https://sigmoidsee.github.io/2024/08/11/%E6%88%91%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E5%B0%81%E6%83%85%E4%B9%A6/">情书</a>, 第一次牵手……未来我们的故事会怎样发展呢？</p>
-<p>​	<em><strong><u>8.14:</u></strong></em>  - 昨天晚上被鬼压床了, 这种感觉真是太难受了, 想动也动不了, 想喊也喊不出, 还体验到了灵魂出窍的感觉, 哎, 这个世界很难让我唯物主义…..少白今天大结局了, 一点都不好看, 把好多剧情都剪掉了！后天就去比赛了, 会发生什么呢……希望一切顺利吧……</p>
-<p>​	<em><strong><u>8.23</u></strong></em>: 见了+1, 突然就打开了话匣子呢, 一下子变得熟悉了好多, 感情小小升温了一下, 走了快两万步, 累趴下了, 在衡水湖满头大汗……</p>
-<p>​	<em><strong><u>8.27</u></strong></em>: 从保定回来了。充实又充满惊喜的一趟旅途, 在回来的前一天保定竟然因为暴雨淹了, 这里吐槽一下保定城市的排水系统, 实在是一坨呀。不喜欢酒吧和ktv的喧闹, 对台球有点感兴趣了, 去了好多景点, 吃了好多美食, 感谢 lsa 的招待, 是我迄今为止生命中难得的交心朋友了, 祝你和 cz 久久呀, 结婚让我坐主桌谢谢嘻嘻嘻嘻嘻嘻。</p>
-<p>​	<em><strong><u>8.30</u></strong></em>: 回学校了, 又要面对新学期繁杂的课程和 peer 压力了。有时候我在想, 我就像以后能生活的好一些, 生活能圆满一点, 我现在做的有些事情其实对我的目标并没有实质的帮助, 那我为什么做呢？好问题, 留给以后得自己回答。</p>
-<h3 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h3><p>​	<em><strong><u>9.7</u></strong></em>: 好久没更新了呢。这些日子一直在内耗, 本来就是不善于表达的人, 还有一个有点小拧巴的对象(+1如果你看到了这里,我没有说你不好,我只是怪我太不好)。回学校之后一直在想应该怎么处理这段感情, 我应该怎么做…… 有时候也会想是不是我想的太多了, 不如专注自己的生活, 给她足够的空间与尊重, 在她需要的时候能提供一下情绪价值, 或许这就是异地恋的最优解呢…… 希望自己以后别再这么内耗吧, 两个人共同进步才是一件很酷的事情呢。</p>
-<p>​	<em><strong><u>9.14</u></strong></em>: 嘻嘻我又来了。距离跟+1见面还有20天左右。这几天没啥事情, 反而是闲的有点发慌。在考虑要不要找个导提前做一下科研, 还是 all in 开发呢？人总是会美化自己未选择的那条路, 看来是真的, 这几天正在综测核算, 今年的我是否又变强了呢？快要中秋了, 有点想家里人了, 每一次跟爸爸妈妈聊天, 总是感觉是一场传统思想与现代思想的碰撞, 不过好在这并不影响我们的亲情。我还是很爱我滴爸爸妈妈的。后天想要出去转一转, 一直在学校憋着还是有点不爽的, 容易玉玉。。。。</p>
-
+<h3 id="学会的-Trick"><a href="#学会的-Trick" class="headerlink" title="学会的 Trick"></a>学会的 Trick</h3><ul>
+<li>set 里面的 find 方法很好用, 适用于排查重复元素</li>
+<li>C++ 是有 char 类型的</li>
+<li>一般滑动窗口都是要搞两个循环的</li>
+</ul>
+<h2 id="428-找到字符串中所有字母的异位词"><a href="#428-找到字符串中所有字母的异位词" class="headerlink" title="428. 找到字符串中所有字母的异位词"></a>428. 找到字符串中所有字母的异位词</h2><p>题目描述, 看<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/?envType=study-plan-v2&envId=top-100-liked">这里</a></p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3>
                 
               </div>
             
@@ -349,7 +342,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%94%9F%E6%B4%BB/" class="category-chain-item">生活</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
   
 
@@ -364,7 +357,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%90%90%E4%BA%8B/" class="print-no-link">#琐事</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" class="print-no-link">#算法题</a>
+      
+        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
       
     </div>
   
@@ -376,8 +371,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>流水账的生活,偶尔也闪烁</div>
-      <div>http://example.com/2024/07/07/流水账的生活-偶尔也闪烁/</div>
+      <div>[Leetcode]Hot100-滑动窗口</div>
+      <div>http://example.com/2024/09/08/Leetcode-Hot100-滑动窗口/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +384,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月7日</div>
+          <div>2024年9月8日</div>
         </div>
       
       
@@ -421,15 +416,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客">
+                      <a href="/2024/09/21/JavaWeb-%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/" title="[JavaWeb]学习历程">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">我的第一篇博客</span>
+                        <span class="hidden-mobile">[JavaWeb]学习历程</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/09/04/Leetcode-Hot100-%E5%8F%8C%E6%8C%87%E9%92%88/" title="[Leetcode]Hot100-双指针">
+                        <span class="hidden-mobile">[Leetcode]Hot100-双指针</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
