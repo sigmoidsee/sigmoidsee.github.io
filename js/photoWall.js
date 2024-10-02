@@ -1,5 +1,5 @@
 var imgDataPath = "/photos/photos.json"; //图片名称高宽信息json文件路径，此配置文件可改变图片顺序   //填入你的路径，注意修改
-var imgPath = "/photos/images/"; //图片访问路径   //填入你的路径，注意修改，后期可自行改到博客的img文件路径 /img/images/
+var imgPath = "/images/imgs/"; //图片访问路径   //填入你的路径，注意修改，后期可自行改到博客的img文件路径 /img/images/
 // var imgPath = "https://cdn.jsdelivr.net/gh/Cenergy/images/gallery/"; //网络图片访问路径实例
 var imgMaxNum = 50; //图片显示数量
 
