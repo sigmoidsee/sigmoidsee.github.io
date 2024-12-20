@@ -16,24 +16,25 @@
   <meta name="author" content="guangda Sun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言到了大三了，基地这边也没什么事情了，想提前准备一下后端开发技术，方便大四的时候能找一下实习。 贴上一张黑马 JavaWeb 开发的学习路线  目前的情况：学过 Java 基础的语法看一下就能想起来，封装、继承、多态的概念也都了解过。黑马的 JavaWeb 也断断续续学过一些，但是记得不清楚了。 Day01-HTML+CSS">
+    <meta name="description" content="0. 写在前面仅以此博客记录计操试点班实现 fs-ext4 的笔记和过程和踩雷 1. 小笔记 VFS: 即Virtual File System，虚拟文件系统。操作系统内核中的一个抽象层，它为不同的文件系统提供了一个统一的接口，使得操作系统能够支持多种文件系统类型，并且让用户程序和内核能够以一致的方式与文件进行交互，而无需关心底层的具体文件系统实现。 FS: 即File System文件系统是操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[JavaWeb]学习历程">
-<meta property="og:url" content="http://example.com/2024/09/21/JavaWeb-%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/index.html">
+<meta property="og:title" content="[试点班]fs-ext4">
+<meta property="og:url" content="http://example.com/2024/12/06/%E8%AF%95%E7%82%B9%E7%8F%AD-fs-ext4/index.html">
 <meta property="og:site_name" content="Sigmoid">
-<meta property="og:description" content="前言到了大三了，基地这边也没什么事情了，想提前准备一下后端开发技术，方便大四的时候能找一下实习。 贴上一张黑马 JavaWeb 开发的学习路线  目前的情况：学过 Java 基础的语法看一下就能想起来，封装、继承、多态的概念也都了解过。黑马的 JavaWeb 也断断续续学过一些，但是记得不清楚了。 Day01-HTML+CSS">
+<meta property="og:description" content="0. 写在前面仅以此博客记录计操试点班实现 fs-ext4 的笔记和过程和踩雷 1. 小笔记 VFS: 即Virtual File System，虚拟文件系统。操作系统内核中的一个抽象层，它为不同的文件系统提供了一个统一的接口，使得操作系统能够支持多种文件系统类型，并且让用户程序和内核能够以一致的方式与文件进行交互，而无需关心底层的具体文件系统实现。 FS: 即File System文件系统是操作">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/post_12/1.jpeg">
-<meta property="article:published_time" content="2024-09-21T13:32:04.000Z">
-<meta property="article:modified_time" content="2024-09-22T08:08:24.663Z">
+<meta property="og:image" content="http://example.com/img/post_9/3.jpeg">
+<meta property="article:published_time" content="2024-12-06T11:31:47.000Z">
+<meta property="article:modified_time" content="2024-12-06T12:30:47.445Z">
 <meta property="article:author" content="guangda Sun">
-<meta property="article:tag" content="Java开发">
+<meta property="article:tag" content="文件系统">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/post_12/1.jpeg">
+<meta name="twitter:image" content="http://example.com/img/post_9/3.jpeg">
   
   
   
-  <title>[JavaWeb]学习历程 - Sigmoid</title>
+  <title>[试点班]fs-ext4 - Sigmoid</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +241,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[JavaWeb]学习历程"></span>
+            <span id="subtitle" data-typed-text="[试点班]fs-ext4"></span>
           
         </div>
 
@@ -251,8 +252,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-21 21:32" pubdate>
-          2024年9月21日 晚上
+        <time datetime="2024-12-06 19:31" pubdate>
+          2024年12月6日 晚上
         </time>
       </span>
     
@@ -263,7 +264,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          117 字
+          268 字
         
       </span>
     
@@ -274,7 +275,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -319,16 +320,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[JavaWeb]学习历程</h1>
+            <h1 id="seo-header">[试点班]fs-ext4</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>到了大三了，基地这边也没什么事情了，想提前准备一下后端开发技术，方便大四的时候能找一下实习。</p>
-<p>贴上一张黑马 JavaWeb 开发的学习路线</p>
-<p><img src="/images/post_8/2.jpg" srcset="/img/loading.gif" lazyload alt="JavaWeb 开发的学习路线"></p>
-<p>目前的情况：学过 Java 基础的语法看一下就能想起来，封装、继承、多态的概念也都了解过。黑马的 JavaWeb 也断断续续学过一些，但是记得不清楚了。</p>
-<h2 id="Day01-HTML-CSS"><a href="#Day01-HTML-CSS" class="headerlink" title="Day01-HTML+CSS"></a>Day01-HTML+CSS</h2>
+                <h1 id="0-写在前面"><a href="#0-写在前面" class="headerlink" title="0. 写在前面"></a>0. 写在前面</h1><p>仅以此博客记录计操试点班实现 fs-ext4 的笔记和过程和踩雷</p>
+<h1 id="1-小笔记"><a href="#1-小笔记" class="headerlink" title="1. 小笔记"></a>1. 小笔记</h1><ul>
+<li>VFS: 即Virtual File System，虚拟文件系统。操作系统内核中的一个抽象层，它为不同的文件系统提供了一个统一的接口，使得操作系统能够支持多种文件系统类型，并且让用户程序和内核能够以一致的方式与文件进行交互，而无需关心底层的具体文件系统实现。</li>
+<li>FS: 即File System文件系统是操作系统中负责管理持久数据的子系统，说简单点，就是负责把用户的文件存到磁盘硬件中，因为即使计算机断电了，磁盘里的数据并不会丢失，所以可以持久化的保存文件。Linux 文件系统会为每个文件分配两个数据结构：<strong>索引节点（index node）和目录项（directory entry）</strong>，它们主要用来记录文件的元信息和目录层次结构。</li>
+<li></li>
+</ul>
+<h1 id="2-过程"><a href="#2-过程" class="headerlink" title="2. 过程"></a>2. 过程</h1><h1 id="3-踩雷"><a href="#3-踩雷" class="headerlink" title="3. 踩雷"></a>3. 踩雷</h1>
                 
               </div>
             
@@ -346,7 +349,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
 
@@ -361,7 +364,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Java%E5%BC%80%E5%8F%91/" class="print-no-link">#Java开发</a>
+        <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="print-no-link">#文件系统</a>
+      
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="print-no-link">#操作系统</a>
       
     </div>
   
@@ -373,8 +378,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[JavaWeb]学习历程</div>
-      <div>http://example.com/2024/09/21/JavaWeb-学习历程/</div>
+      <div>[试点班]fs-ext4</div>
+      <div>http://example.com/2024/12/06/试点班-fs-ext4/</div>
     </div>
     <div class="license-meta">
       
@@ -386,7 +391,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月21日</div>
+          <div>2024年12月6日</div>
         </div>
       
       
@@ -418,18 +423,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/06/%E8%AF%95%E7%82%B9%E7%8F%AD-fs-ext4/" title="[试点班]fs-ext4">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[试点班]fs-ext4</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/08/Leetcode-Hot100-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="[Leetcode]Hot100-滑动窗口">
-                        <span class="hidden-mobile">[Leetcode]Hot100-滑动窗口</span>
+                      <a href="/2024/09/21/JavaWeb-%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/" title="[JavaWeb]学习历程">
+                        <span class="hidden-mobile">[JavaWeb]学习历程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
