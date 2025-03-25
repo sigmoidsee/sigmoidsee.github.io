@@ -189,6 +189,31 @@
   
   
   <entry>
+    <title>[Leetcode]错题记录</title>
+    <link href="/2024/09/02/Leetcode-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <url>/2024/09/02/Leetcode-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Leetcode-错题记录"><a href="#Leetcode-错题记录" class="headerlink" title="Leetcode 错题记录"></a>Leetcode 错题记录</h1><p>​仅以此篇记录我 Leetcode 做题过程中踩过的坑和实用Tips</p><h5 id="1-2711-对角线上不同值的数量差"><a href="#1-2711-对角线上不同值的数量差" class="headerlink" title="1. 2711. 对角线上不同值的数量差"></a>1. <a href="https://leetcode.cn/problems/difference-of-number-of-distinct-values-on-diagonals/">2711. 对角线上不同值的数量差</a></h5><pre><code class="hljs">- 矩阵对角线条数 m+n-1</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>工作就业帖子</title>
     <link href="/2024/08/31/%E5%B7%A5%E4%BD%9C%E5%B0%B1%E4%B8%9A%E5%B8%96%E5%AD%90/"/>
     <url>/2024/08/31/%E5%B7%A5%E4%BD%9C%E5%B0%B1%E4%B8%9A%E5%B8%96%E5%AD%90/</url>
