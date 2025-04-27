@@ -29,6 +29,33 @@
   
   
   <entry>
+    <title>CompilerPrinciple</title>
+    <link href="/2025/04/27/CompilerPrinciple/"/>
+    <url>/2025/04/27/CompilerPrinciple/</url>
+    
+    <content type="html"><![CDATA[<h1 id="编译原理实验的一些细节"><a href="#编译原理实验的一些细节" class="headerlink" title="编译原理实验的一些细节"></a>编译原理实验的一些细节</h1><h4 id="前端FrontEnd"><a href="#前端FrontEnd" class="headerlink" title="前端FrontEnd"></a>前端FrontEnd</h4><h5 id="AST-h"><a href="#AST-h" class="headerlink" title="AST.h"></a>AST.h</h5><ul><li>一些函数注释里面出现的字面量就是“字符串”的意思。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编译器</tag>
+      
+      <tag>课程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[Leetcode]错题记录</title>
     <link href="/2025/03/25/Leetcode-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     <url>/2025/03/25/Leetcode-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
