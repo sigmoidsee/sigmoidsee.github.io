@@ -5,8 +5,10 @@ html, body {
 
 a, button, [role="button"] {
   cursor: url(/img/link.cur), pointer;
+  background-color: @theme_background; 
 }
 
 input[type="text"], textarea {
   cursor: url(/img/vert.cur), text;
+  background-color: @theme_background; 
 }
