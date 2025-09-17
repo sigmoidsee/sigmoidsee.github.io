@@ -1,4 +1,12 @@
-html { 
+html, body { 
     cursor: url(/img/arrow.cur),auto;
     background-color: @theme_background; 
+}
+
+a, button, [role="button"] {
+  cursor: url(/img/link.cur), pointer;
+}
+
+input[type="text"], textarea {
+  cursor: url(/img/vert.cur), text;
 }
