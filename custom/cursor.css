@@ -1,0 +1,4 @@
+html { 
+    cursor: url(/img/arrow.cur),auto;
+    background-color: @theme_background; 
+}
